@@ -10,16 +10,12 @@ cd "$(dirname "$0")/.."
 
 # Check if virtual environment exists
 if [ ! -d ".venv" ]; then
-    echo "❌ Virtual environment not found. Please run 'uv venv' first."
+    echo "❌ Virtual environment not found. Please run './scripts/setup-dev.sh' first."
     exit 1
 fi
 
 # Activate virtual environment
 source .venv/bin/activate
-
-# Install dependencies if not already installed
-echo "📦 Checking dependencies..."
-uv pip install -e .
 
 # Check if .env file exists
 if [ ! -f ".env" ]; then
@@ -34,9 +30,19 @@ set -a  # automatically export all variables
 source .env
 set +a
 
-echo "📡 Server will communicate via stdio for MCP protocol"
-echo "💡 To test with MCPO proxy, run: uvx mcpo --port 8000 -- python -m ergo_price_mcp"
+# Set default port if not specified
+PORT=${MCP_PORT:-8000}
+
+# Set default secret key if not specified  
+SECRET_KEY=${MCP_SECRET_KEY:-secret}
+
+echo "📡 Starting MCP server with MCPO proxy on port $PORT"
+echo "💡 You can change the port by setting MCP_PORT environment variable in .env"
+echo "🔗 Server will be available at http://localhost:$PORT"
 echo ""
 
-# Start the MCP server
-python -m ergo_price_mcp 
+# Get the full path to the activated Python
+PYTHON_PATH=$(which python)
+
+# Start the MCP server with uvx and mcpo proxy using the correct Python
+uvx mcpo --port $PORT --api-key "$SECRET_KEY" -- "$PYTHON_PATH" -m ergo_price_mcp 

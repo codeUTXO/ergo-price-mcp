@@ -346,14 +346,60 @@ class CruxAPIClient:
             CruxParsingError: If response cannot be parsed
         """
         try:
+            # Check for empty response
+            response_text = response.text
+            if not response_text or response_text.strip() == "":
+                # For successful status codes, empty response might be valid
+                if response.status_code == 200:
+                    self.logger.warning(f"API returned empty response with 200 status for {response.url}")
+                    return {}  # Return empty dict for successful empty responses
+                else:
+                    raise CruxParsingError(
+                        f"API returned empty response (status: {response.status_code})",
+                        response_data="<empty>",
+                        expected_format="JSON",
+                        status_code=response.status_code
+                    )
+            
             # Try to parse as JSON
             data = response.json()
         except Exception as e:
-            raise CruxParsingError(
-                f"Failed to parse response as JSON: {e}",
-                response_data=response.text,
-                expected_format="JSON",
-            )
+            # Check if it's an HTML error page (common for 502 errors)
+            response_text = response.text[:500]  # Limit to first 500 chars for logging
+            
+            if "502 Bad Gateway" in response_text or "502" in str(response.status_code):
+                raise CruxParsingError(
+                    f"Spectrum endpoint returned 502 Bad Gateway error. The backend service is temporarily unavailable.",
+                    response_data="502 Bad Gateway HTML response",
+                    expected_format="JSON",
+                    status_code=response.status_code
+                )
+            elif "html" in response_text.lower() or "<title>" in response_text.lower():
+                raise CruxParsingError(
+                    f"API returned HTML error page instead of JSON (status: {response.status_code})",
+                    response_data=response_text,
+                    expected_format="JSON",
+                    status_code=response.status_code
+                )
+            elif not response_text or response_text.strip() == "":
+                # Handle empty response case
+                if response.status_code == 200:
+                    self.logger.warning(f"API returned empty response with 200 status for {response.url}")
+                    return {}  # Return empty dict for successful empty responses
+                else:
+                    raise CruxParsingError(
+                        f"API returned empty response (status: {response.status_code})",
+                        response_data="<empty>",
+                        expected_format="JSON",
+                        status_code=response.status_code
+                    )
+            else:
+                raise CruxParsingError(
+                    f"Failed to parse response as JSON: {e}. Response preview: {response_text[:200]}",
+                    response_data=response_text,
+                    expected_format="JSON",
+                    status_code=response.status_code
+                )
         
         # If no model specified, return raw data
         if response_model is None:
@@ -402,14 +448,6 @@ class CruxAPIClient:
         """Get transaction history from explorer."""
         return await self.get("/crux/explorer_tx_history", params=params)
     
-    async def get_gold_oracle_history(self, **params) -> Dict[str, Any]:
-        """Get gold oracle historical data."""
-        return await self.get("/crux/gold_oracle_history", params=params)
-    
-    async def get_crux_info(self) -> Dict[str, Any]:
-        """Get general CRUX Finance information."""
-        return await self.get("/crux/info")
-    
     async def get_token_info(self, token_id: str) -> Dict[str, Any]:
         """Get detailed token information."""
         return await self.get(f"/crux/token_info/{token_id}")
@@ -417,14 +455,6 @@ class CruxAPIClient:
     async def get_tx_stats(self, tx_id: str) -> Dict[str, Any]:
         """Get transaction statistics."""
         return await self.get(f"/crux/tx_stats/{tx_id}")
-    
-    # ===================================
-    # DEX Endpoints
-    # ===================================
-    
-    async def get_order_history(self, **params) -> Dict[str, Any]:
-        """Get DEX order history."""
-        return await self.get("/dex/order_history", params=params)
     
     # ===================================
     # Spectrum Endpoints
@@ -438,17 +468,9 @@ class CruxAPIClient:
         """Get price statistics from Spectrum protocol."""
         return await self.get("/spectrum/price_stats", params=params)
     
-    async def get_spectrum_token_list(self, **params) -> Dict[str, Any]:
-        """Get token list from Spectrum protocol."""
-        return await self.get("/spectrum/token_list", params=params)
-    
     # ===================================
     # TradingView Endpoints
     # ===================================
-    
-    async def get_tradingview_config(self) -> Dict[str, Any]:
-        """Get TradingView configuration."""
-        return await self.get("/trading_view/config")
     
     async def get_tradingview_history(self, **params) -> Dict[str, Any]:
         """Get TradingView historical data."""
@@ -457,14 +479,6 @@ class CruxAPIClient:
     async def get_tradingview_search(self, **params) -> Dict[str, Any]:
         """Search TradingView symbols."""
         return await self.get("/trading_view/search", params=params)
-    
-    async def get_tradingview_symbols(self, **params) -> Dict[str, Any]:
-        """Get TradingView symbols."""
-        return await self.get("/trading_view/symbols", params=params)
-    
-    async def get_tradingview_time(self) -> Dict[str, Any]:
-        """Get TradingView server time."""
-        return await self.get("/trading_view/time")
 
 
 # ===================================

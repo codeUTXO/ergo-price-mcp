@@ -1,0 +1,1433 @@
+{
+  "timestamp": 1748658972.6912339,
+  "base_url": "http://localhost:8000",
+  "results": [
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "t": 1748658968,
+        "price": 0.9689512435081794
+      },
+      "test_name": "Get ERG Price",
+      "endpoint": "get_erg_price",
+      "params": null,
+      "description": "Get current ERG price from CoinGecko with USD/BTC prices, market cap, and 24h change",
+      "duration_ms": 686.22,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": [
+        {
+          "t": 1746144000,
+          "price": 0.750873863697052
+        },
+        {
+          "t": 1746230400,
+          "price": 0.7429514527320862
+        },
+        {
+          "t": 1746316800,
+          "price": 0.7539060711860657
+        },
+        {
+          "t": 1746403200,
+          "price": 0.7199135422706604
+        },
+        {
+          "t": 1746489600,
+          "price": 0.7195659279823303
+        },
+        {
+          "t": 1746576000,
+          "price": 0.7453899383544922
+        },
+        {
+          "t": 1746662400,
+          "price": 0.7551975250244141
+        },
+        {
+          "t": 1746748800,
+          "price": 0.83030766248703
+        },
+        {
+          "t": 1746835200,
+          "price": 0.8700827956199646
+        },
+        {
+          "t": 1746921600,
+          "price": 0.9061650037765503
+        },
+        {
+          "t": 1747008000,
+          "price": 0.8795636296272278
+        },
+        {
+          "t": 1747094400,
+          "price": 0.8651958703994751
+        },
+        {
+          "t": 1747180800,
+          "price": 0.8544464707374573
+        },
+        {
+          "t": 1747267200,
+          "price": 0.8281276822090149
+        },
+        {
+          "t": 1747353600,
+          "price": 0.7964057326316833
+        },
+        {
+          "t": 1747440000,
+          "price": 0.7831209301948547
+        },
+        {
+          "t": 1747526400,
+          "price": 0.7705615758895874
+        },
+        {
+          "t": 1747612800,
+          "price": 0.8245974183082581
+        },
+        {
+          "t": 1747699200,
+          "price": 0.807692289352417
+        },
+        {
+          "t": 1747785600,
+          "price": 0.7977312803268433
+        },
+        {
+          "t": 1747872000,
+          "price": 0.8180808424949646
+        },
+        {
+          "t": 1747958400,
+          "price": 0.8639987111091614
+        },
+        {
+          "t": 1748044800,
+          "price": 0.8041226863861084
+        },
+        {
+          "t": 1748131200,
+          "price": 0.7900247573852539
+        },
+        {
+          "t": 1748217600,
+          "price": 0.8412432670593262
+        },
+        {
+          "t": 1748304000,
+          "price": 0.8484804034233093
+        },
+        {
+          "t": 1748390400,
+          "price": 0.8829770088195801
+        },
+        {
+          "t": 1748476800,
+          "price": 0.8658710718154907
+        },
+        {
+          "t": 1748563200,
+          "price": 0.9053376317024231
+        },
+        {
+          "t": 1748649600,
+          "price": 0.991274893283844
+        }
+      ],
+      "test_name": "Get ERG History (30 days)",
+      "endpoint": "get_erg_history",
+      "params": {
+        "countback": 30,
+        "resolution": "1D"
+      },
+      "description": "Get 30 days of daily ERG price history",
+      "duration_ms": 320.2,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": [
+        {
+          "t": 1748131200,
+          "price": 0.7900247573852539
+        },
+        {
+          "t": 1748217600,
+          "price": 0.8412432670593262
+        },
+        {
+          "t": 1748304000,
+          "price": 0.8484804034233093
+        },
+        {
+          "t": 1748390400,
+          "price": 0.8829770088195801
+        },
+        {
+          "t": 1748476800,
+          "price": 0.8658710718154907
+        },
+        {
+          "t": 1748563200,
+          "price": 0.9053376317024231
+        },
+        {
+          "t": 1748649600,
+          "price": 0.991274893283844
+        }
+      ],
+      "test_name": "Get ERG History (7 days with timestamps)",
+      "endpoint": "get_erg_history",
+      "params": {
+        "countback": 7,
+        "resolution": "1D",
+        "from_timestamp": 1748054167,
+        "to_timestamp": 1748658967
+      },
+      "description": "Get 7 days of ERG history with explicit timestamp range",
+      "duration_ms": 304.29,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": [
+        {
+          "t": 1748131200,
+          "price": 0.7900247573852539
+        },
+        {
+          "t": 1748217600,
+          "price": 0.8412432670593262
+        },
+        {
+          "t": 1748304000,
+          "price": 0.8484804034233093
+        },
+        {
+          "t": 1748390400,
+          "price": 0.8829770088195801
+        },
+        {
+          "t": 1748476800,
+          "price": 0.8658710718154907
+        },
+        {
+          "t": 1748563200,
+          "price": 0.9053376317024231
+        },
+        {
+          "t": 1748649600,
+          "price": 0.991274893283844
+        }
+      ],
+      "test_name": "Get ERG History (24 hours)",
+      "endpoint": "get_erg_history",
+      "params": {
+        "countback": 7,
+        "resolution": "1D"
+      },
+      "description": "Get last 7 days of daily ERG price data (daily resolution is most reliable)",
+      "duration_ms": 309.75,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "erg_price_usd": 0.9750555157661438,
+        "asset_price_erg": 0.05577658907254603
+      },
+      "test_name": "Get Spectrum Price (SigUSD)",
+      "endpoint": "get_spectrum_price",
+      "params": {
+        "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b"
+      },
+      "description": "Get current SigUSD price from Spectrum DEX (Note: endpoint may have 502 issues)",
+      "duration_ms": 188.43,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "erg_price_usd": 0.9087550640106201,
+        "asset_price_erg": 0.05577758112316762
+      },
+      "test_name": "Get Spectrum Price (SigUSD, specific time)",
+      "endpoint": "get_spectrum_price",
+      "params": {
+        "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b",
+        "time_point": 1748572567390
+      },
+      "description": "Get SigUSD price from 24 hours ago",
+      "duration_ms": 214.62,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "token_info": {
+          "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b",
+          "name": "ErgOne",
+          "description": "Limited supply / Reserve of value.  \nBuy and swap assets , acquire NFTs, currency in the Sigmaverse.\n\nAll in One",
+          "minted": 100000000000000,
+          "decimals": 8
+        },
+        "max": {
+          "erg": 0.05577658907254603,
+          "usd": 0.05438527082580763
+        },
+        "min": {
+          "erg": 0.05577658907254603,
+          "usd": 0.05438527082580763
+        },
+        "average": {
+          "erg": 0.05577658907254604,
+          "usd": 0.05438527082580763
+        }
+      },
+      "test_name": "Get Spectrum Price Stats (SigUSD)",
+      "endpoint": "get_spectrum_price_stats",
+      "params": {
+        "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b"
+      },
+      "description": "Get SigUSD price statistics (min/max/avg) for last 24 hours",
+      "duration_ms": 620.73,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "token_info": {
+          "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b",
+          "name": "ErgOne",
+          "description": "Limited supply / Reserve of value.  \nBuy and swap assets , acquire NFTs, currency in the Sigmaverse.\n\nAll in One",
+          "minted": 100000000000000,
+          "decimals": 8
+        },
+        "max": {
+          "erg": 0.05577658907254603,
+          "usd": 0.05438527082580763
+        },
+        "min": {
+          "erg": 0.05577658907254603,
+          "usd": 0.05438527082580763
+        },
+        "average": {
+          "erg": 0.05577658907254604,
+          "usd": 0.05438527082580763
+        }
+      },
+      "test_name": "Get Spectrum Price Stats (SigUSD, 7 days)",
+      "endpoint": "get_spectrum_price_stats",
+      "params": {
+        "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b",
+        "time_window": 604800
+      },
+      "description": "Get SigUSD price statistics over 7-day window",
+      "duration_ms": 613.61,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "token_info": {
+          "token_id": "52f4544ce8a420d484ece16f9b984d81c23e46971ef5e37c29382ac50f80d5bd",
+          "name": "AuctionCoin",
+          "description": "AuctionCoin: A degen financial game based on Auction Coin protocol: https://www.ergoforum.org/t/auction-coin-auction-based-emission-and-degen-finance-autonomous-machine/4287",
+          "minted": 100000,
+          "decimals": 0
+        },
+        "max": {
+          "erg": 0.16391184363378766,
+          "usd": 0.15982314723452234
+        },
+        "min": {
+          "erg": 0.16391184363378766,
+          "usd": 0.15982314723452234
+        },
+        "average": {
+          "erg": 0.16391184363378766,
+          "usd": 0.15982314723452234
+        }
+      },
+      "test_name": "Get Spectrum Price Stats (Djed)",
+      "endpoint": "get_spectrum_price_stats",
+      "params": {
+        "token_id": "52f4544ce8a420d484ece16f9b984d81c23e46971ef5e37c29382ac50f80d5bd",
+        "time_point": 1748658967390,
+        "time_window": 86400
+      },
+      "description": "Get Djed Unstable price statistics with explicit time point",
+      "duration_ms": 612.27,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "name": "ErgOne",
+        "description": "Limited supply / Reserve of value.  \nBuy and swap assets , acquire NFTs, currency in the Sigmaverse.\n\nAll in One",
+        "decimals": 8,
+        "minted": 100000000000000,
+        "token_type": "Other",
+        "token_meta_data": "Other"
+      },
+      "test_name": "Get Asset Info (SigUSD)",
+      "endpoint": "get_asset_info",
+      "params": {
+        "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b"
+      },
+      "description": "Get detailed SigUSD asset information",
+      "duration_ms": 2.52,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "name": "ErgOne",
+        "description": "Limited supply / Reserve of value.  \nBuy and swap assets , acquire NFTs, currency in the Sigmaverse.\n\nAll in One",
+        "decimals": 8,
+        "minted": 100000000000000,
+        "token_type": "Other",
+        "token_meta_data": "Other"
+      },
+      "test_name": "Get Token Info (SigUSD)",
+      "endpoint": "get_token_info",
+      "params": {
+        "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b"
+      },
+      "description": "Get comprehensive SigUSD token information",
+      "duration_ms": 2.02,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "token_id": "52f4544ce8a420d484ece16f9b984d81c23e46971ef5e37c29382ac50f80d5bd",
+        "token_name": "AuctionCoin",
+        "token_description": "AuctionCoin: A degen financial game based on Auction Coin protocol: https://www.ergoforum.org/t/auction-coin-auction-based-emission-and-degen-finance-autonomous-machine/4287",
+        "decimals": 0,
+        "minted": 100000.0,
+        "value_in_erg": 0.16391184363378766,
+        "locked_supply": 82623.0,
+        "liquid_supply": 17371.0,
+        "burned_supply": 6.0
+      },
+      "test_name": "Get Token Info (Djed)",
+      "endpoint": "get_token_info",
+      "params": {
+        "token_id": "52f4544ce8a420d484ece16f9b984d81c23e46971ef5e37c29382ac50f80d5bd"
+      },
+      "description": "Get Djed Unstable token information",
+      "duration_ms": 3.42,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "name": "ErgOne",
+        "description": "Limited supply / Reserve of value.  \nBuy and swap assets , acquire NFTs, currency in the Sigmaverse.\n\nAll in One",
+        "decimals": 8,
+        "minted": 100000000000000,
+        "token_type": "Other",
+        "token_meta_data": "Other"
+      },
+      "test_name": "Get Circulating Supply (SigUSD)",
+      "endpoint": "get_circulating_supply",
+      "params": {
+        "token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b"
+      },
+      "description": "Get SigUSD circulating supply data",
+      "duration_ms": 3.27,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "results": [
+          {
+            "symbol": "The Ergo Manifesto",
+            "description": "https://bafybeicz4p44x2k7pdafd6v4k6defzlxf3dcaff7hvq5aljz3goltlzy7e.ipfs.dweb.link/",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:The Ergo Manifesto",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "The Ergo Manifesto",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "Mew Fund #4 ERG/Holderino LP",
+            "description": "",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:Mew Fund #4 ERG/Holderino LP",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "Mew Fund #4 ERG/Holderino LP",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "ErgoDEX Token Part 2",
+            "description": "DEX Token",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:ErgoDEX Token Part 2",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "ErgoDEX Token Part 2",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "WT_ERG",
+            "description": "Wrapped Test ERG",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:WT_ERG",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "WT_ERG",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "ergopad",
+            "description": "The official ErgoPad token",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:ergopad",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "ergopad",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "LEMUR ADERGO",
+            "description": "CARDANO AND ERGO MEME TOKEN",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:LEMUR ADERGO",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "LEMUR ADERGO",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "hodlERG3",
+            "description": "The Phoenix Finance implementation of the hodlCoin protocol: hodlERG 3%",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:hodlERG3",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "hodlERG3",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "ErgOne",
+            "description": "Limited supply / Reserve of value.  \nBuy and swap assets , acquire NFTs, currency in the Sigmaverse.\n\nAll in One",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:ErgOne",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "ErgOne",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "tERG",
+            "description": "Test ERG",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:tERG",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "tERG",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "ErgOSmaug",
+            "description": "Project consisting of NFTs on the ERGO blockchain.  If the project grows, a mobile game perhaps could emerge.",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:ErgOSmaug",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "ErgOSmaug",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "Ergox",
+            "description": "Currency used in the matrix",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:Ergox",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "Ergox",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "hodlERG",
+            "description": "hodlERG 3%",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:hodlERG",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "hodlERG",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "Ergo",
+            "description": "Ergo",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:Ergo",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "Ergo",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "ERGCREAM",
+            "description": "ERGO CRYPTO RULES EVERYTHING AROUND ME",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:ERGCREAM",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "ERGCREAM",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "ERGOD",
+            "description": "The divine token that brings a touch of godly humor into your wallet!",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:ERGOD",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "ERGOD",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "greenbERG",
+            "description": "Meme token for Mark Greenberg, ex-Kraken listing manager and new Ergonaut",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:greenbERG",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "greenbERG",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "Ergold",
+            "description": "Gold has been a store of wealth for thousands of years and has outlasted the currencies of various empires and nation-states that have come and gone. It is estimated that we have less than 55,000 tons of gold left to discover. Gold mining is one of the most destructive industries in the world. It can displace communities, contaminate drinking water, hurt workers, and destroy pristine environments. It pollutes water and land with mercury and cyanide, endangering the health of people and ecosystems.\nOur Understanding of a Traditional Asset Has Changed.\nAn asset is anything of value or a resource of value that can be converted into cash. So an asset\u2019s value will depend on the collective belief and trust of the people dealing with it. \nThe growth in the number of cryptocurrencies is changing all of this, and the faith placed in them by investors is driving confidence in them as an asset class. If investors continue to believe in the value of gold because others believe in it, it will remain an asset. The difference between cryptocurrencies today and gold in the past is therefore minimal.\nIt is not a secret that Bitcoin is the most valued and thereby attractive cryptocurrency on the market. Experts have largely credited this to its scarcity. \nScarcity increases the value of an asset, therefore the Ergold quantity issued will be capped at 55 million. The number of kilograms of gold left to be discovered. \nLet's reduce the environmental impact and make its practices more sustainable with the blockchain technology.",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:Ergold",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "Ergold",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "heisenbERG",
+            "description": "Ergo's Walter White Themed Memecoin.\n\nThe uncertainty principle posits that the more we know about a particle's position, the less we know about its speed, and vice versa.\n\nThe more you know, the less you know? \n\nUncertainty is an inherent aspect of anything with wave-like behavior.",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:heisenbERG",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "heisenbERG",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "ErgTip",
+            "description": "Share this token to show gratitude and say\n- I appreciate you.\n- Let me know if you need anything else.\n- Couldn\u2019t have done it without you.\n- You made this easy.\n- You\u2019re so helpful.\n- What do you think?\n- I\u2019m impressed!\n- Thank you.",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:ErgTip",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "ErgTip",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "CzechErgo",
+            "description": "Ergo token from Czech republic",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:CzechErgo",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "CzechErgo",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "ERGCube",
+            "description": "http://tinyurl.com/ergcube",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:ERGCube",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "ERGCube",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "Ergo Inu",
+            "description": "",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:Ergo Inu",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "Ergo Inu",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "PEPERG",
+            "description": "The creation of the popular pepe meme coin on the Ergo Blockchain",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:PEPERG",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "PEPERG",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          }
+        ]
+      },
+      "test_name": "Search Tokens (ERG)",
+      "endpoint": "search_tokens",
+      "params": {
+        "query": "ERG"
+      },
+      "description": "Search for tokens containing 'ERG' in name or symbol",
+      "duration_ms": 399.71,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "results": [
+          {
+            "symbol": "SigUSD",
+            "description": "SigmaUSD - V2",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:SigUSD",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "SigUSD",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          },
+          {
+            "symbol": "tSigUSD",
+            "description": "",
+            "exchange": "Spectrum",
+            "format": "price",
+            "full_name": "Spectrum:tSigUSD",
+            "listed_exchange": "Spectrum",
+            "minmov": 1,
+            "name": "tSigUSD",
+            "pricescale": 10000.0,
+            "session": "24x7",
+            "supported_resolutions": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240",
+              "1D",
+              "1W",
+              "1M"
+            ],
+            "timezone": "UTC",
+            "type": "crypto",
+            "has_intraday": true,
+            "intraday_multipliers": [
+              "1",
+              "5",
+              "15",
+              "30",
+              "60",
+              "120",
+              "240"
+            ]
+          }
+        ]
+      },
+      "test_name": "Search Tokens (SigUSD)",
+      "endpoint": "search_tokens",
+      "params": {
+        "query": "SigUSD"
+      },
+      "description": "Search for SigUSD related tokens",
+      "duration_ms": 409.22,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "results": []
+      },
+      "test_name": "Search Tokens (Djed)",
+      "endpoint": "search_tokens",
+      "params": {
+        "query": "Djed"
+      },
+      "description": "Search for Djed related tokens",
+      "duration_ms": 272.03,
+      "expected_success": true
+    },
+    {
+      "success": true,
+      "status_code": 200,
+      "data": {
+        "s": "no_data",
+        "t": [],
+        "c": [],
+        "o": [],
+        "h": [],
+        "l": [],
+        "v": []
+      },
+      "test_name": "Get TradingView History (ERG)",
+      "endpoint": "get_trading_view_history",
+      "params": {
+        "symbol": "ERG",
+        "from_timestamp": 1748054167,
+        "to_timestamp": 1748658967,
+        "resolution": "1D",
+        "countback": 7
+      },
+      "description": "Get 7 days of ERG TradingView historical data",
+      "duration_ms": 336.03,
+      "expected_success": true
+    }
+  ]
+}

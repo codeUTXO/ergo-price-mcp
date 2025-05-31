@@ -57,7 +57,7 @@ async def handle_call_tool(name: str, arguments: dict[str, Any] | None) -> list[
         List of text content with tool results
     """
     # Create a new log context for this tool execution
-    with LogContext(tool_name=name):
+    with LogContext():
         logger.info(f"Tool execution requested: {name}")
         logger.debug(f"Tool arguments: {arguments}")
         

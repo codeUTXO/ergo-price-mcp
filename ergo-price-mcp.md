@@ -30,9 +30,9 @@ The Ergo Price MCP (Model Context Protocol) Server provides LLMs with real-time 
 
 #### Price Lookup Tools
 - `get_erg_price` - Get current ERG price from CoinGecko
-- `get_erg_history` - Get historical ERG price data
-- `get_spectrum_price` - Get current price from Spectrum DEX
-- `get_spectrum_price_stats` - Get price statistics from Spectrum
+- `get_erg_history` - Get historical ERG price data (requires countback and resolution parameters)
+- `get_spectrum_price` - Get current price from Spectrum DEX (requires token_id)
+- `get_spectrum_price_stats` - Get price statistics from Spectrum (requires token_id, time_point, time_window)
 
 #### Asset Information Tools
 - `get_asset_info` - Get detailed asset information by token ID

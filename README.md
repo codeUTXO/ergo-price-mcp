@@ -103,7 +103,7 @@ User: What's the current price of ERG?
 Claude: [Uses get_erg_price] The current ERG price is $2.45 USD...
 
 User: Show me ERG price history for the last month
-Claude: [Uses get_erg_history with days=30] Here's the 30-day price chart...
+Claude: [Uses get_erg_history with countback=30, resolution="1D"] Here's the 30-day price chart...
 
 User: Tell me about token abc123...
 Claude: [Uses get_asset_info] This is XYZ Token with 1M supply...
@@ -113,16 +113,46 @@ Claude: [Uses get_asset_info] This is XYZ Token with 1M supply...
 
 ```bash
 # Get ERG price
-curl -X POST http://localhost:8000/tools/get_erg_price \
+curl -X POST http://localhost:8000/get_erg_price \
      -H "Authorization: Bearer secret" \
      -H "Content-Type: application/json" \
      -d '{}'
 
+# Get ERG history (30 daily data points)
+curl -X POST http://localhost:8000/get_erg_history \
+     -H "Authorization: Bearer secret" \
+     -H "Content-Type: application/json" \
+     -d '{"countback": 30, "resolution": "1D"}'
+
 # Get asset info
-curl -X POST http://localhost:8000/tools/get_asset_info \
+curl -X POST http://localhost:8000/get_asset_info \
      -H "Authorization: Bearer secret" \
      -H "Content-Type: application/json" \
      -d '{"token_id": "your-token-id"}'
+
+# Get Spectrum price
+curl -X POST http://localhost:8000/get_spectrum_price \
+     -H "Authorization: Bearer secret" \
+     -H "Content-Type: application/json" \
+     -d '{"token_id": "your-token-id"}'
+
+# Get Spectrum price stats (24h window)
+curl -X POST http://localhost:8000/get_spectrum_price_stats \
+     -H "Authorization: Bearer secret" \
+     -H "Content-Type: application/json" \
+     -d '{"token_id": "fcfca7654fb0da57ecf9a3f489bcbeb1d43b56dce7e73b352f7bc6f2561d2a1b", "time_point": 1748657068, "time_window": 86400}'
+
+# Get TradingView symbol info
+curl -X POST http://localhost:8000/get_trading_view_symbols \
+     -H "Authorization: Bearer secret" \
+     -H "Content-Type: application/json" \
+     -d '{"symbol": "ERG"}'
+
+# Search for tokens
+curl -X POST http://localhost:8000/search_tokens \
+     -H "Authorization: Bearer secret" \
+     -H "Content-Type: application/json" \
+     -d '{"query": "ERG", "limit": 5}'
 ```
 
 ## Architecture

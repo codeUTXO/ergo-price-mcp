@@ -25,8 +25,6 @@ from .asset_tools import (
 from .market_tools import (
     get_all_market_tools,
     execute_market_tool,
-    get_gold_oracle_history_tool,
-    get_trading_view_symbols_tool,
     get_trading_view_history_tool,
     search_tokens_tool,
 )
@@ -55,8 +53,6 @@ __all__ = [
     "get_tx_stats_tool",
     
     # Individual tool definitions - Market Tools
-    "get_gold_oracle_history_tool",
-    "get_trading_view_symbols_tool",
     "get_trading_view_history_tool",
     "search_tokens_tool",
 ]
@@ -101,7 +97,6 @@ async def execute_tool(tool_name: str, arguments: dict):
     
     # Market tools
     market_tool_names = [
-        "get_gold_oracle_history", "get_trading_view_symbols",
         "get_trading_view_history", "search_tokens"
     ]
     

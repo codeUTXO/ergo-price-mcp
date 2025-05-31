@@ -105,18 +105,26 @@ Get current ERG price from CoinGecko.
 #### `get_erg_history`
 Get historical ERG price data.
 - **Parameters**: 
-  - `days` (optional): Number of days (1-365, default: 7)
+  - `countback` (required): Number of data points to retrieve (1-365, default: 30)
+  - `resolution` (required): Data resolution like "1D", "1H", "1M" (default: "1D")
+  - `from_timestamp` (optional): Start timestamp (calculated if not provided)
+  - `to_timestamp` (optional): End timestamp (uses current time if not provided)
 - **Returns**: Historical price data with timestamps
 
 #### `get_spectrum_price`
 Get current prices from Spectrum DEX.
-- **Parameters**: None
+- **Parameters**: 
+  - `token_id` (required): Token ID to get price for
+  - `time_point` (optional): Specific timestamp for price (uses current time if not provided)
 - **Returns**: Current trading data from Spectrum DEX
 
 #### `get_spectrum_price_stats`
 Get Spectrum DEX trading statistics.
-- **Parameters**: None
-- **Returns**: 24h volume, price changes, trading stats
+- **Parameters**: 
+  - `token_id` (required): Token ID to get statistics for
+  - `time_point` (required): Specific timestamp for stats
+  - `time_window` (required): Time window for stats in seconds (e.g., 3600 for 1h, 86400 for 24h)
+- **Returns**: Min, max, and average prices over the specified time window
 
 ### Asset Information Tools
 
@@ -152,24 +160,29 @@ Get historical gold oracle data.
 - **Returns**: Gold price history from oracle system
 
 #### `get_trading_view_symbols`
-Get available trading symbols.
-- **Parameters**: None
-- **Returns**: List of supported trading symbols for charts
+Get symbol information from TradingView integration.
+- **Parameters**: 
+  - `symbol` (required): Symbol identifier to get information for
+- **Returns**: Detailed information about a specific trading symbol including supported resolutions and metadata
 
 #### `get_trading_view_history`
-Get historical trading data (OHLCV).
-- **Parameters**:
-  - `symbol` (required): Trading symbol
-  - `resolution` (optional): Chart resolution (1D, 1H, etc.)
-  - `from_timestamp` (optional): Start time (Unix timestamp)
-  - `to_timestamp` (optional): End time (Unix timestamp)
-- **Returns**: OHLCV data for charting
+Get historical trading data (OHLCV) for a specific symbol.
+- **Parameters**: 
+  - `symbol` (required): Trading symbol to get historical data for
+  - `from_timestamp` (required): Start timestamp (Unix timestamp)
+  - `to_timestamp` (required): End timestamp (Unix timestamp)
+  - `resolution` (required): Chart resolution like "1D", "1H", etc.
+  - `countback` (required): Number of data points to retrieve
+- **Returns**: OHLCV historical trading data
 
 #### `search_tokens`
-Search for tokens by name/symbol.
-- **Parameters**:
-  - `query` (required): Search term
-- **Returns**: Matching tokens with metadata
+Search for tokens using TradingView search functionality.
+- **Parameters**: 
+  - `query` (required): Search query string to find matching tokens
+  - `type` (optional): Symbol type filter
+  - `exchange` (optional): Exchange filter
+  - `limit` (optional): Number of results to return
+- **Returns**: Search results containing matching tokens with detailed metadata
 
 ## Example Usage with LLMs
 
@@ -184,7 +197,7 @@ Claude: I'll check the current ERG price for you.
 The current price of ERG is $2.45 USD, up 3.2% in the last 24 hours...
 
 User: Show me ERG price history for the last 30 days
-Claude: [Uses get_erg_history tool with days=30]
+Claude: [Uses get_erg_history tool with countback=30 and resolution=1D]
 Here's the ERG price chart for the last 30 days...
 
 User: Tell me about token ID abc123def456...
@@ -313,46 +326,3 @@ DEVELOPMENT_DEBUG=true
 DEVELOPMENT_DEV_MODE=true
 DEVELOPMENT_MOCK_CRUX_API=true  # For offline testing
 ```
-
-## Integration Examples
-
-### Python Script
-
-```python
-import asyncio
-import sys
-sys.path.append('src')
-
-from ergo_price_mcp.tools import execute_tool
-
-async def get_erg_price():
-    result = await execute_tool("get_erg_price", {})
-    print(result[0].text)
-
-asyncio.run(get_erg_price())
-```
-
-### Node.js with MCPO
-
-```javascript
-const axios = require('axios');
-
-async function getErgPrice() {
-    const response = await axios.post('http://localhost:8000/tools/get_erg_price', {}, {
-        headers: {
-            'Authorization': 'Bearer your-secret-key',
-            'Content-Type': 'application/json'
-        }
-    });
-    
-    console.log(response.data);
-}
-
-getErgPrice();
-```
-
-## Support
-
-- **Issues**: Report bugs and feature requests on GitHub
-- **Documentation**: See the main project README and API reference
-- **Community**: Join discussions on Discord/Telegram 

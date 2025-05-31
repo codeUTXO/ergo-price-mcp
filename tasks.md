@@ -51,71 +51,62 @@ Build an MCP server that **consumes** the existing CRUX Finance API (https://api
 
 ---
 
-## Phase 2: CRUX API HTTP Client Implementation 🔌
+## Phase 2: CRUX API Client Implementation ✅
 
-### 2.1 API Response Models & Schemas
-- [ ] **2.1.1** Create `src/ergo_price_mcp/api/models.py`
-  - **Purpose**: Define Pydantic models for CRUX API responses
-  - ErgPriceResponse model (for `/coingecko/erg_price` endpoint)
-  - ErgHistoryResponse model (for `/coingecko/erg_history` endpoint)
-  - AssetInfoResponse model (for `/crux/asset_info/{token_id}` endpoint)
-  - TokenInfoResponse model (for `/crux/token_info/{token_id}` endpoint)
-  - SpectrumPriceResponse model (for `/spectrum/price` endpoint)
-  - TradingViewResponse models (for `/trading_view/*` endpoints)
-- [ ] **2.1.2** Create API error response models
-  - Handle HTTP error responses from CRUX API
-- [ ] **2.1.3** Add validation and type hints for all models
+### 2.1 Data Models for API Responses ✅
+**Status**: Completed
+**Files**: `src/ergo_price_mcp/api/models.py`
 
-### 2.2 API Exception Handling
-- [ ] **2.2.1** Create `src/ergo_price_mcp/api/exceptions.py`
-  - CruxAPIError base exception
-  - RateLimitError with retry-after parsing
-  - TokenNotFoundError for 404 responses from CRUX
-  - APITimeoutError for timeout handling
-  - InvalidResponseError for malformed CRUX API responses
+- [x] Create Pydantic models for all CRUX Finance API endpoints
+  - [x] CoinGecko models (ERG price, history)
+  - [x] CRUX models (asset info, circulating supply, transaction data)
+  - [x] DEX models (order history)
+  - [x] Spectrum models (price data, token lists)
+  - [x] TradingView models (OHLCV data, symbols, configuration)
+  - [x] Generic response models (error, success)
+- [x] Add field validation and documentation
+- [x] Include utility functions for parsing and conversion
 
-### 2.3 HTTP Client Implementation
-- [ ] **2.3.1** Create `src/ergo_price_mcp/api/client.py` HTTP client class
-  - **Purpose**: Make HTTP requests to CRUX Finance API
-  - Async HTTP client using httpx
-  - Base URL: https://api.cruxfinance.io
-  - Request/response logging
-  - Timeout configuration
-- [ ] **2.3.2** Implement authentication handling (if required)
-  - Check if CRUX API requires API keys
-  - API key header injection if needed
-- [ ] **2.3.3** Add retry logic with exponential backoff
-  - Configurable retry attempts for failed requests to CRUX
-  - Jitter for rate limiting
-  - Circuit breaker pattern for API outages
+### 2.2 Exception Classes ✅
+**Status**: Completed
+**Files**: `src/ergo_price_mcp/api/exceptions.py`
 
-### 2.4 CRUX API Endpoint Methods
-- [ ] **2.4.1** Implement CoinGecko section endpoints
-  - `get_erg_price()` -> calls `GET /coingecko/erg_price`
-  - `get_erg_history(days: int = 7)` -> calls `GET /coingecko/erg_history`
-- [ ] **2.4.2** Implement CRUX section endpoints
-  - `get_asset_info(token_id: str)` -> calls `GET /crux/asset_info/{token_id}`
-  - `get_token_info(token_id: str)` -> calls `GET /crux/token_info/{token_id}`
-  - `get_circulating_supply(token_id: str)` -> calls `GET /crux/circulating_supply/{token_id}`
-  - `get_gold_oracle_history()` -> calls `GET /crux/gold_oracle_history`
-- [ ] **2.4.3** Implement Spectrum section endpoints
-  - `get_spectrum_price()` -> calls `GET /spectrum/price`
-  - `get_spectrum_price_stats()` -> calls `GET /spectrum/price_stats`
-  - `get_spectrum_token_list()` -> calls `GET /spectrum/token_list`
-- [ ] **2.4.4** Implement TradingView section endpoints
-  - `get_trading_view_symbols()` -> calls `GET /trading_view/symbols`
-  - `get_trading_view_history(symbol, from_date, to_date)` -> calls `GET /trading_view/history`
-  - `search_trading_view(query: str)` -> calls `GET /trading_view/search`
+- [x] Create custom exception hierarchy
+  - [x] Base `CruxAPIError` class
+  - [x] HTTP-specific exceptions (404, 429, 5xx, etc.)
+  - [x] Connection and timeout exceptions
+  - [x] Validation and parsing exceptions
+- [x] Add error mapping functions
+- [x] Include retry logic utilities
 
-### 2.5 HTTP Client Testing
-- [ ] **2.5.1** Create unit tests for HTTP client
-  - Mock HTTP responses from CRUX API endpoints
-  - Test error handling scenarios
-  - Test retry logic
-- [ ] **2.5.2** Create integration tests with real CRUX API
-  - Test actual HTTP calls to https://api.cruxfinance.io
-  - Test rate limiting behavior
-  - Test timeout handling
+### 2.3 HTTP Client with Retry Logic ✅
+**Status**: Completed
+**Files**: `src/ergo_price_mcp/api/client.py`
+
+- [x] Implement `CruxAPIClient` class
+  - [x] Configuration from settings
+  - [x] Request/response logging
+  - [x] Rate limiting with token bucket algorithm
+  - [x] Exponential backoff retry logic
+  - [x] Comprehensive error handling
+- [x] Add all CRUX API endpoint methods
+  - [x] CoinGecko endpoints
+  - [x] CRUX core endpoints
+  - [x] DEX endpoints
+  - [x] Spectrum endpoints
+  - [x] TradingView endpoints
+- [x] Include async context manager support
+- [x] Add global client instance management
+
+### 2.4 API Package Integration ✅
+**Status**: Completed
+**Files**: `src/ergo_price_mcp/api/__init__.py`
+
+- [x] Update package exports
+- [x] Test imports and basic functionality
+- [x] Verify logging integration
+
+**Phase 2 Summary**: The CRUX API client is fully implemented with robust error handling, retry logic, rate limiting, and comprehensive coverage of all API endpoints. The client integrates seamlessly with our configuration and logging systems.
 
 ---
 

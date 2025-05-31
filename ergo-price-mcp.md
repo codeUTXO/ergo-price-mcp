@@ -56,6 +56,91 @@ The Ergo Price MCP (Model Context Protocol) Server provides LLMs with real-time 
 - **Price History** (`ergo://history/{token_id}`) - Historical price charts
 - **Trading Pairs** (`ergo://pairs/{base_token}`) - Available trading pairs
 
+### Caching System
+
+#### Cache Features
+- **Multi-Tier TTL**: Different cache durations for different data types
+  - Price data: 30 seconds (frequent updates)
+  - Metadata: 5 minutes (relatively stable)
+  - Historical data: 1 hour (mostly static)
+  - Static data: 24 hours (rarely changes)
+
+- **Automatic Management**: LRU eviction, expired entry cleanup, memory size tracking
+- **Thread Safety**: Concurrent access with RLock protection
+- **Statistics**: Real-time cache performance monitoring
+
+#### Using Cache Decorators
+
+```python
+from ergo_price_mcp.cache import cache_price_data, cache_metadata, cached
+
+# Cache price data with 30-second TTL
+@cache_price_data()
+async def get_token_price(token_id: str):
+    # Fetch from API...
+    return price_data
+
+# Cache metadata with 5-minute TTL
+@cache_metadata()
+async def get_token_info(token_id: str):
+    # Fetch from API...
+    return token_info
+
+# Custom caching with specific TTL
+@cached(ttl=120, prefix="custom")
+async def expensive_operation(param: str):
+    # Do expensive work...
+    return result
+```
+
+#### Using Cache Manager
+
+```python
+from ergo_price_mcp.cache import get_cache_manager
+
+manager = get_cache_manager()
+
+# Cache token price
+manager.cache_token_price("token_id", {"price": 2.50, "volume": 1000})
+
+# Get cached price
+price_data = manager.get_token_price("token_id")
+
+# Cache statistics
+stats = manager.get_cache_stats()
+print(f"Hit rate: {stats['hit_rate']:.2f}%")
+
+# Clear specific data type
+manager.clear_by_type("price")
+
+# Invalidate all data for a token
+manager.invalidate_token_data("token_id")
+```
+
+#### Direct Cache Access
+
+```python
+from ergo_price_mcp.cache import get_cache
+
+cache = get_cache()
+
+# Basic operations
+cache.set("key", "value", ttl=60, prefix="my_data")
+value = cache.get("key", prefix="my_data")
+
+# Check existence
+if cache.exists("key", prefix="my_data"):
+    print("Key exists and is valid")
+
+# Manual cleanup
+expired_count = cache.cleanup_expired()
+print(f"Cleaned up {expired_count} expired entries")
+
+# Statistics
+stats = cache.get_stats()
+print(f"Cache size: {stats.entries} entries, {stats.total_size_bytes} bytes")
+```
+
 ## API Integration
 
 ### CRUX Finance API Endpoints
@@ -300,32 +385,60 @@ ergo-price-mcp/
 }
 ```
 
-## Development Roadmap
+## 🚀 Implementation Status
 
-### Phase 1: Core Implementation ✅
-- [x] Basic MCP server setup
-- [x] CRUX API client implementation
-- [x] Core price lookup tools
-- [x] Basic error handling and logging
+### ✅ Phase 1: Project Setup & Foundation (Completed)
+- **Project Structure**: Fully configured with proper Python packaging
+- **Configuration System**: Pydantic-based settings with environment variable support
+- **Logging System**: Structured logging with correlation IDs and configurable formats
+- **Development Environment**: Virtual environment with all dependencies installed
 
-### Phase 2: Enhanced Features 🚧
-- [ ] Asset information tools
-- [ ] Market data resources
-- [ ] Caching layer implementation
-- [ ] Rate limiting and retry logic
+### ✅ Phase 2: CRUX API Client Implementation (Completed)
+- **Data Models**: Comprehensive Pydantic models for all API endpoints
+- **Exception Handling**: Custom exception hierarchy with retry logic utilities
+- **HTTP Client**: Robust async client with rate limiting, retries, and error handling
+- **API Coverage**: Complete implementation of all CRUX Finance API endpoints:
+  - CoinGecko integration (ERG prices and history)
+  - CRUX core endpoints (asset info, token data, transaction stats)
+  - DEX integration (order history)
+  - Spectrum protocol (price data, token lists)
+  - TradingView compatibility (OHLCV data, symbols, search)
 
-### Phase 3: Advanced Features 📋
-- [ ] WebSocket support for real-time data
-- [ ] Historical data analysis tools
-- [ ] Portfolio tracking capabilities
-- [ ] Price alerts and notifications
+### ✅ Phase 3: Caching Layer (Completed)
+- **In-Memory Cache**: Thread-safe MemoryCache with TTL support and LRU eviction
+- **Cache Statistics**: Comprehensive monitoring with hits, misses, evictions, and size tracking
+- **Automatic Cleanup**: Background task for expired entry cleanup with configurable intervals
+- **Cache Decorators**: Easy-to-use decorators for different data types (price, metadata, history, static)
+- **Cache Manager**: High-level cache management for complex operations and bulk invalidation
+- **Key Features**:
+  - Prefix-based namespacing for different data types
+  - Configurable TTL per data type (price: 30s, metadata: 5min, history: 1h, static: 24h)
+  - Singleton pattern for global cache access
+  - Comprehensive error handling and logging
+  - Memory size estimation and limits
+  - Thread-safe operations with RLock
+  - Hash-based key generation for complex data structures
 
-### Phase 4: Production Ready 📋
-- [ ] Comprehensive testing suite
-- [ ] Performance optimization
-- [ ] Documentation completion
-- [ ] Docker containerization
-- [ ] CI/CD pipeline setup
+### 🔄 Phase 4: MCP Tools Implementation (Next)
+- Price lookup tools
+- Asset information tools
+- Market data tools
+- Historical data tools
+
+### 🏗️ Phase 5: MCP Server (Upcoming)
+- Main server implementation
+- Request routing and validation
+- Error handling and logging
+
+### 🧪 Phase 6: Testing & Integration (Upcoming)
+- Unit tests for all components
+- Integration tests with CRUX API
+- End-to-end testing with MCP clients
+
+### 📚 Phase 7: Documentation & Deployment (Upcoming)
+- API documentation
+- Usage examples
+- Deployment guides
 
 ## Error Handling
 
